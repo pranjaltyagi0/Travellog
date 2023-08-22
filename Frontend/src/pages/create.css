@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.uploadbox-main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;        
+    align-items: center;
+    width: 100vw;
+    margin-bottom: auto;
+}
+
+.uploadbox-heading {
+    font-size: 20px;
+    font-weight: lighter;
+    font-family: "Work Sans", sans-serif;
+    text-align: center;
+}
+
+.drag-box {
+    height: 350px;
+    width: 500px;
+    border: 2px dashed black;
+    justify-content: center;
+    margin: auto;
+}
+
+.image-preview {
+    height: 150px;
+    width: 150px;
+}

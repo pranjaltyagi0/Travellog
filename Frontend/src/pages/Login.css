@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Questrial:300,400');
+*{
+    box-sizing:border-box;
+}
+.outer-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+.innerbox-main{
+    font-weight: lighter;
+    border: 3px solid black;
+    border-radius: 30px;
+    padding: 25px;
+    width: 525px;
+    height: 375px;
+    text-align: center;
+    font-family: Questrial;
+}
+.innerbox-main label,input{
+    padding: 5px;
+    display: inline-block;
+
+
+
+}
