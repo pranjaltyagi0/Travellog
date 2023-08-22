@@ -1,5 +1,6 @@
 *{
     box-sizing: border-box;
+    font-family: MonoLisa, Menlo, Monaco, "Courier New", monospace;
 }
 body {
     margin: 0;

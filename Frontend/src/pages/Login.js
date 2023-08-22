@@ -10,8 +10,17 @@ function Login() {
             username: username,
             password: password,
         }
-        console.log(Logindata);
+        fetch('http://localhost:5000/login', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                Logindata,
+            })
+        })
     }
+
     function handleUsername(event) {
         setusername(event.target.value);
     }
@@ -19,7 +28,7 @@ function Login() {
         setpassword(event.target.value);
     }
     return (
-        <>  
+        <>
             <Navbar />
             <div className='outer-box'>
                 <div className="innerbox-main">
@@ -27,7 +36,7 @@ function Login() {
 
                     <form className="formclass" onSubmit={handleSubmit}>
                         <div className='Username-heading'>
-                            <label>Username</label>
+                            <label>Username/Email</label>
                             <input type="text" value={username} placeholder='Username/Email' onChange={handleUsername}></input>
                         </div>
                         <div>
