@@ -4,6 +4,7 @@
 }
 body {
     margin: 0;
+    background-color: rgb(220, 184, 184);
 }
 .nav{
     font-size:30px;
@@ -28,8 +29,9 @@ body {
 
 .site-title{
     font-size:2rem;
-    /* padding-left: 200px; */
-    color: #00a8ff;
+    width: 30vw;
+    padding-right: 35vw;
+    justify-content: space-between;
 }
 .nav ul {
     font-size: 20px;
@@ -46,6 +48,9 @@ body {
     display: flex;
     align-items: center;
     font-weight: bold;
+}
+.login-svg{
+    padding-top: 6px;
 }
 .nav li .active{
     color: #00a8ff
