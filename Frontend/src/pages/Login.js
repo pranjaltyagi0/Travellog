@@ -1,126 +1,235 @@
-// import { React, useState } from 'react';
-// import './Login.css'
-// import Navbar from '../components/navbar';
+// import React, { useEffect } from 'react';
+// import { useState } from 'react';
+// import { Link, NavLink, useNavigate } from 'react-router-dom'
+// // import styles from './signup.module.css'
+// import styles from './Auth.module.css'; // Import the shared styles module
+
 // function Login() {
 //     const [username, setusername] = useState('');
 //     const [password, setpassword] = useState('');
-//     const handleSubmit = (event) => {
-//         event.preventDefault();
-//         const Logindata = {
-//             username: username,
-//             password: password,
-//         }
-//         fetch('http://localhost:5000/login', {
+//     const [isValid, setisValid] = useState(true);
+//     const navigate = useNavigate();
+//     const handleSubmit = (e) => {
+//         e.preventDefault();
+
+//         const data = fetch('http://localhost:5000/api/login', {
 //             method: 'POST',
 //             headers: {
-//                 'Content-type': 'application/json',
+//                 'Content-type': 'application/json'
 //             },
 //             body: JSON.stringify({
-//                 Logindata,
+//                 username: username,
+//                 password: password
 //             })
-//         })
-//     }
+//         }).then((res) => {
+//             if (res.ok) {
+//                 return res.json();
+//             } else {
+//                 res.json();
+//             }
+//         }).then((data) => {
+//             if (data && data.goodtogo) {
+//                 setisValid(true);
+//                 localStorage.setItem('userId', data.userId)
+//                 console.log(data);
+//                 navigate("/");
 
-//     function handleUsername(event) {
-//         setusername(event.target.value);
-//     }
-//     const handlePassword = (event) => {
-//         setpassword(event.target.value);
+//             } else {
+//                 setisValid(false);
+//             }
+//         })
+//             .catch((error) => {
+//                 console.error('Error:', error);
+//             });
+
 //     }
 //     return (
 //         <>
-//             <Navbar />
-//             <div className='outer-box'>
-//                 <div className="innerbox-main">
-//                     <h1 class='main-heading'>Sign In</h1>
+//             {/* <div className={styles.container}> */}
 
-//                     <form className="formclass" onSubmit={handleSubmit}>
-//                         <div className='Username-heading'>
-//                             <label>Username/Email</label>
-//                             <input type="text" value={username} placeholder='Username/Email' onChange={handleUsername}></input>
-//                         </div>
+//                 <div className={styles.main}>
+//                     {/* Apply CSS class */}
+//                     <form className='form' onSubmit={handleSubmit}>
+//                         {/* <label className='Username-label'>Username */}
+//                         <input type='Text' value={username} placeholder=' Username' onChange={(e) => setusername(e.target.value)}></input>
+//                         {/* </label> */}
+//                         <br />
+//                         <input type='Password' value={password} placeholder=' Password' onChange={(e) => setpassword(e.target.value)}></input>
 //                         <div>
-//                             <label>Password</label>
-//                             <input type='text' value={password} placeholder='Password' onChange={handlePassword}></input>
-//                         </div>
-//                         <div>
-//                             <input type="Submit"></input>
+//                             <button type='submit'>Submit</button>
 //                         </div>
 //                     </form>
+//                     {!isValid && <div className={styles.valid}>Invalid Username or password</div>}
 //                 </div>
-//             </div>
+
+//                 <div>Don't have an account?
+//                 <button className={styles['signup-button']}><Link style={{ textDecoration: 'none', color: '#fff' }} to='/signup'>SignUp</Link></button>
+//                 </div>
 //         </>
 //     )
 // }
 // export default Login;
-import React, { useEffect } from 'react';
-import { useState } from 'react';
-import {Link, NavLink,useNavigate} from 'react-router-dom'
-import './Login.css'
+// import React, { useState } from 'react';
+// import { Link, useNavigate } from 'react-router-dom';
+// import styles from './Login.module.css';
+
+// function Login() {
+//   const [username, setusername] = useState('');
+//   const [password, setpassword] = useState('');
+//   const [isValid, setisValid] = useState(true);
+//   const navigate = useNavigate();
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     const data = fetch('http://localhost:5000/api/login', {
+//       method: 'POST',
+//       headers: {
+//         'Content-type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         username: username,
+//         password: password
+//       })
+//     })
+//       .then((res) => {
+//         if (res.ok) {
+//           return res.json();
+//         } else {
+//           res.json();
+//         }
+//       })
+//       .then((data) => {
+//         if (data && data.goodtogo) {
+//           setisValid(true);
+//           localStorage.setItem('userId', data.userId);
+//           console.log(data);
+//           navigate('/');
+//         } else {
+//           setisValid(false);
+//         }
+//       })
+//       .catch((error) => {
+//         console.error('Error:', error);
+//       });
+//   };
+
+//   return (
+//     <div className={styles.container}>
+//       <div className={styles.main}>
+//         <form className="form" onSubmit={handleSubmit}>
+//           <input
+//             type="text"
+//             value={username}
+//             placeholder="Username"
+//             onChange={(e) => setusername(e.target.value)}
+//           />
+//           <br />
+//           <input
+//             type="password"
+//             value={password}
+//             placeholder="Password"
+//             onChange={(e) => setpassword(e.target.value)}
+//           />
+//           <div>
+//             <button type="submit">Submit</button>
+//           </div>
+//         </form>
+//         {!isValid && <div className={styles.valid}>Invalid Username or password</div>}
+//       </div>
+//       <div className={styles['signup-container']}>
+//         <div className={styles['signup-text']}>Don't have an account?</div>
+//         <button className={styles['signup-button']}>
+//           <Link style={{ textDecoration: 'none', color: '#fff' }} to="/signup">
+//             SignUp
+//           </Link>
+//         </button>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Login;
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import styles from './Auth.module.css';
+
 function Login() {
-    const [username,setusername] = useState('');
-    const [password,setpassword] = useState('');
-    const navigate =  useNavigate();
-    const handleSubmit=(e)=>{
-        e.preventDefault();
+  const [username, setusername] = useState('');
+  const [password, setpassword] = useState('');
+  const [isValid, setisValid] = useState(true);
+  const navigate = useNavigate();
 
-        const data = fetch('http://localhost:5000/api/login',{
-            method:'POST',
-            headers:{
-                'Content-type':'application/json'
-            },
-            body: JSON.stringify({
-                username:username,
-                password:password
-            })
-        }).then((res) => {
-            if (res.ok) {
-                return res.json();
-            }else{
-                res.json();
-                console.log("Res part"+res);
-            }
-        }).then((data)=>{
-            if (data && data.goodtogo) {
-                navigate("/");
-            } else {
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-                console.log("data");
-                console.log(data.goodtogo);
-            }
-        })
-        .catch((error) => {
-            // Handle any network errors or server errors here
-            console.error('Error:', error);
-        });
-  
-        console.log(data);
-        console.log(username);
-        console.log(password);
+    const data = fetch('http://localhost:5000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password
+      })
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          res.json();
+        }
+      })
+      .then((data) => {
+        if (data && data.goodtogo) {
+          setisValid(true);
+          localStorage.setItem('userId', data.userId);
+          console.log(data);
+          navigate('/');
+        } else {
+          setisValid(false);
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  };
 
-    }
-    return (
-        <>
-            <div className='form-container'>
-                <form className='form' onSubmit={handleSubmit}>
-                    <label className='Username-label'>Username
-                        <input className="form-input" type='Text' value={username} placeholder=' Username' onChange={(e)=> setusername(e.target.value)}></input></label>
-                    <br />
-                    {/* <label className='Password-label'>Password */}
-                        <input className="form-input" type='Password' value={password} placeholder=' Password' onChange={(e)=> setpassword(e.target.value)}></input>
-                        {/* </label> */}
-                        <div>
-                    <button type='submit' className="form-button">Submit</button>
-                    </div>
-                </form>
-            </div>
-            
-            <div>Don't have an account? 
-                <p>
-            <button type="button" ><Link className="redirectbutton" style={{textDecoration:'None'}}  to ='/signup'>SignUp</Link></button>
-            </p>
-            </div>
-        </>
-    )
+  return (
+    <div className={styles['auth-container']}>
+      <div className={styles['auth-main']}>
+        <form className={styles['auth-form']} onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={username}
+            placeholder="Username"
+            onChange={(e) => setusername(e.target.value)}
+          />
+          <br />
+          <input
+            type="password"
+            value={password}
+            placeholder="Password"
+            onChange={(e) => setpassword(e.target.value)}
+          />
+          <div>
+            <button className={styles['auth-button']} type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+        {!isValid && <div className={styles['auth-valid']}>Invalid Username or password</div>}
+      </div>
+      <div>
+        <div className={styles['auth-signup-text']}>Don't have an account?</div>
+        <button className={styles['auth-signup-button']}>
+          <Link style={{ textDecoration: 'none', color: '#fff' }} to="/signup">
+            SignUp
+          </Link>
+        </button>
+      </div>
+    </div>
+  );
 }
+
 export default Login;

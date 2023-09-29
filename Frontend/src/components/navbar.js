@@ -17,6 +17,7 @@ export default function Navbar() {
                         <li>
                             <NavLink to='/create'>Get Started</NavLink>
                         </li>
+                        
                     </ul>
                 </div>
             </div>

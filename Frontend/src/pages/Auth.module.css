@@ -1,0 +1,85 @@
+/* Auth.module.css */
+
+/* Container styling for both Login and SignUp */
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  /* Main styling for both Login and SignUp */
+  .auth-main {
+    background-color: #f5f5f5;
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  /* Form styling for both Login and SignUp */
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Input field styling for both Login and SignUp */
+  .auth-input {
+    padding: 10px;
+    width: 90%;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Submit button styling for both Login and SignUp */
+  .auth-button[type="submit"] {
+    background-color: #6d44b8;
+    color: #fff;
+    width: auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .auth-button[type="submit"]:hover {
+    background-color: #00a552;
+  }
+  
+  /* Error message styling for both Login and SignUp */
+  .auth-valid {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  /* "Don't have an account?" text styling for both Login and SignUp */
+  .auth-signup-text {
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  
+  /* "SignUp" button styling for both Login and SignUp */
+  .auth-signup-button {
+    background: #6d44b8;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .auth-signup-button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -17,28 +17,58 @@ const signup =async (req,res,next)=>{
             username,email,
             password:hashedPassword
         })
-        res.json({goodtogo:true,success:"Success"});
+        // const userId = userdata.findOne({username})._id.toString();
+        // console.log( userdata.findOne({username:username})._id.toString());
+        // const userId = await newUser._id.toString();
+        const userId = user._id.toString()
+        console.log(user._id.toString());
+        res.json({goodtogo:true,success:"Success",userId:userId});
     }catch{
         res.status(500);
     }
 }
 
-const login = async (req,res,next)=>{
-    const user =await userdata.findOne({username:req.body.username})
-    if(!user){
-        return res.json({err:"Invalid credentials"})
-    }
-    try{
-        if(await bcrypt.compare(req.body.password,user.password)){
-            res.status(200).json({goodtogo:true,success:"Success"});
-        }else{
-            return res.json({err:"Invalid credentials"});
-        }
+// const login = async (req,res,next)=>{
+//     const user =await userdata.findOne({username:req.body.username})
+//     if(!user){
+//         return res.json({err:"Invalid credentials"})
+//     }
+//     try{
+//         if(await bcrypt.compare(req.body.password,user.password)){
+//             const userId = userdata.findOne({username:req.body.username})._id.toString()
+//             console.log(userId);
+//             res.status(200).json({goodtogo:true,success:"Success",userId:userId});
+//             // res.status(200).json({goodtogo:true,success:"Success"});
+//         }else{
+//             return res.json({err:"Invalid credentials"});
+//         }
         
-    }catch{
-        res.status(500);
+//     }catch{
+//         res.status(500);
+//     }
+// }
+const login = async (req, res, next) => {
+    try {
+      const user = await userdata.findOne({ username: req.body.username });
+  
+      if (!user) {
+        return res.json({ err: "Invalid credentials" });
+      }
+  
+      const passwordMatch = await bcrypt.compare(req.body.password, user.password);
+  
+      if (passwordMatch) {
+        const userId = user._id.toString();
+        console.log(userId);
+        res.status(200).json({ goodtogo: true, success: "Success", userId: userId });
+      } else {
+        return res.json({ err: "Invalid credentials" });
+      }
+    } catch {
+      res.status(500);
     }
-}
+  };
+  
 const alldata = async (req,res,next)=>{
     try{
         const alldata = await userdata.find();
