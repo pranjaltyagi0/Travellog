@@ -295,9 +295,10 @@ function Create() {
             // Remove the data URL prefix to get the base64 data
             return preview.replace(/^data:image\/[a-z]+;base64,/, "");
         });
+        const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
         // Send a POST request to the backend to upload the base64 encoded images
-        fetch("http://localhost:5000/upload/user", {
+        fetch(backendUrl+"/upload/user", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -89,7 +89,9 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = fetch('http://localhost:5000/api/signup', {
+    const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+
+    const data = fetch(backendUrl+'/api/signup', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
