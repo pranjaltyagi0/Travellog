@@ -4,7 +4,8 @@ const bcrypt = require('bcrypt')
 const signup =async (req,res,next)=>{
     try{
         const {username,email,password} = req.body;
-        const usernameChecker = await userdata.findOne({username});   
+        const usernameChecker = await userdata.findOne({username});
+        console.log(typeof userdata.findOne({username}))   
         if(usernameChecker){
             return res.json({goodtogo:false,err:"username already exist"});
         }

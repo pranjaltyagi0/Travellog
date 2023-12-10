@@ -1,3 +1,9 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 *{
     box-sizing: border-box;
     font-family: MonoLisa, Menlo, Monaco, "Courier New", monospace;

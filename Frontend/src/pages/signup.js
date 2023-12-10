@@ -79,6 +79,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Auth.module.css';
+import Navbar from '../components/navbar';
 
 const SignUp = () => {
   const [username, setusername] = useState('');
@@ -127,48 +128,98 @@ const SignUp = () => {
   };
 
   return (
-    <>
-      <div className={styles['auth-container']}>
-        <form className={styles['auth-form']} onSubmit={handleSubmit}>
+    // <>
+    //   <div className={styles['auth-container']}>
+    //     <form className={styles['auth-form']} onSubmit={handleSubmit}>
+    //       <input
+    //         type="email"
+    //         value={email}
+    //         placeholder="Email"
+    //         onChange={(e) => setemail(e.target.value)}
+    //       />
+    //       <br />
+    //       <input
+    //         type="text"
+    //         value={username}
+    //         placeholder="Username"
+    //         onChange={(e) => setusername(e.target.value)}
+    //       />
+    //       <br />
+    //       <input
+    //         type="password"
+    //         value={password}
+    //         placeholder="Password"
+    //         onChange={(e) => setpassword(e.target.value)}
+    //       />
+    //       <div>
+    //         <button className={styles['auth-button']} type="submit">
+    //           Submit
+    //         </button>
+    //       </div>
+    //     </form>
+    //     {!isValid && <div className={styles['auth-valid']}>Username or email already exist</div>}
+        
+    //     {/* Move the Login button to a separate div */}
+    //     <div className={styles['auth-login-button']}>
+    //       <div className={styles['auth-signup-text']}>Don't have an account?</div>
+    //       <button className={styles['auth-signup-button']}>
+    //         <Link style={{ textDecoration: 'none', color: '#fff' }} to="/login">
+    //           Login
+    //         </Link>
+    //       </button>
+    //     </div>
+    //   </div>
+    // </>
+
+
+    <div className='login'>
+
+      <Navbar />
+
+      <div className='login-container'>
+
+        <div className='login-box'>
+
+          <div className='signin-head'> Sign Up</div>
+          <form className='login-form' onSubmit={handleSubmit}>
           <input
             type="email"
             value={email}
             placeholder="Email"
             onChange={(e) => setemail(e.target.value)}
           />
-          <br />
           <input
             type="text"
             value={username}
             placeholder="Username"
             onChange={(e) => setusername(e.target.value)}
           />
-          <br />
           <input
             type="password"
             value={password}
             placeholder="Password"
             onChange={(e) => setpassword(e.target.value)}
           />
-          <div>
-            <button className={styles['auth-button']} type="submit">
+            {/* <div> */}
+            <button className='submit-btn' type="submit">
               Submit
             </button>
-          </div>
-        </form>
-        {!isValid && <div className={styles['auth-valid']}>Username or email already exist</div>}
-        
-        {/* Move the Login button to a separate div */}
-        <div className={styles['auth-login-button']}>
-          <div className={styles['auth-signup-text']}>Don't have an account?</div>
-          <button className={styles['auth-signup-button']}>
-            <Link style={{ textDecoration: 'none', color: '#fff' }} to="/login">
+            {/* </div> */}
+          </form>
+          {!isValid && <div className='login-error'>Username or email already exist</div>}
+          <div className='signup-box'>
+          <div className='dont'>Already have an account?</div>
+          <Link style={{ textDecoration: 'none', color: '#fff' }} to="/login">
+            <button className='signup-btn'>
               Login
-            </Link>
-          </button>
+            </button>
+          </Link>
+          </div>
         </div>
+
       </div>
-    </>
+
+    </div>
   );
 };
 
